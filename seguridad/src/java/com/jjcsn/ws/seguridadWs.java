@@ -10,10 +10,8 @@ import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.ejb.Stateless;
 
-import com.jjcsn.services.Database;
-import com.jjcsn.dao.UsuarioDAO;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import com.jjcsn.model.IUsuario;
+import com.jjcsn.impl.UsuarioImpl;
 
 /**
  *
@@ -34,17 +32,15 @@ public class seguridadWs {
             @WebParam(name = "usuario") String user,
             @WebParam(name = "clave") String pass
     ) {
-        Database db = new Database();
-        String msg = "No existe usuario";
-        try {
-            UsuarioDAO dao = new UsuarioDAO(db.getConn());
-            if (dao.validarUsuario(user, pass)) {
-                msg = "Ok";
-            }
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(seguridadWs.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            db.closeConn();
+        String msg = "Usuario no existe.";
+        
+        if ( (user.trim().isEmpty() || pass.trim().equals("")) ) {
+            msg = "Usuario y clave son obligatorios";           
+        }
+
+        IUsuario usr = (IUsuario) new UsuarioImpl();
+        if (usr.validarUsuario(user, pass)) {
+            msg = "Ok";
         }
         return msg;
     }

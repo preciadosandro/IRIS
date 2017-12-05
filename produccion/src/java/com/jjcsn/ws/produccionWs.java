@@ -5,15 +5,13 @@
  */
 package com.jjcsn.ws;
 
-import com.jjcsn.dao.SolicitudDAO;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.ejb.Stateless;
 
-import com.jjcsn.services.Database;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import com.jjcsn.model.ISolicitud;
+import com.jjcsn.impl.SolicitudImpl;
 
 /**
  *
@@ -31,23 +29,22 @@ public class produccionWs {
      * @return Ok si existe
      */
     @WebMethod(operationName = "registrarSolicitud")
-    public String validarUsuario(
+    public String registrarSolicitud(
             @WebParam(name = "producto") String producto,
             @WebParam(name = "cantidad") int cantidad,
             @WebParam(name = "observacion") String observacion
     ) {
-        Database db = new Database();
+
         String msg = "Error registrando solicitud";
-        try {
-            SolicitudDAO dao = new SolicitudDAO(db.getConn());
-            if (dao.registrarSolicitud(producto, cantidad, observacion)) {
-                msg = "Ok";
-            }
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(produccionWs.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            db.closeConn();
+        
+        if ( (producto.trim().isEmpty() || observacion.trim().isEmpty() || cantidad == 0) ) {
+            msg = "Campos son obligatorios";
         }
-        return msg;
+
+        ISolicitud solicitud = (ISolicitud) new SolicitudImpl();
+        if (solicitud.registrarSolicitud(producto, cantidad, observacion)) {
+            msg = "Ok";
+        }
+        return msg;        
     }
 }

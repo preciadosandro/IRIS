@@ -11,8 +11,8 @@ package com.jjcsn.model;
  */
 public class Solicitud {
 
-    private Long id;
-    private Long cantprodu;
+    private int id;
+    private int cantprodu;
     private String estado;
     private String observacion;
     private String producto;
@@ -20,7 +20,7 @@ public class Solicitud {
     public Solicitud() {
     }
 
-    public Solicitud(Long id, Long cantprodu, String estado,
+    public Solicitud(int id, int cantprodu, String estado,
         String observacion, String producto) {
         this.id = id;
         this.cantprodu = cantprodu;
@@ -29,19 +29,19 @@ public class Solicitud {
         this.producto = producto;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public Long getCantprodu() {
+    public int getCantprodu() {
         return cantprodu;
     }
 
-    public void setCantprodu(Long cantprodu) {
+    public void setCantprodu(int cantprodu) {
         this.cantprodu = cantprodu;
     }
 
