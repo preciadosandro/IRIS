@@ -1,0 +1,1 @@
+-inventario/src/java/com/jjcsn/ws/StockWs.java 2javaX(h

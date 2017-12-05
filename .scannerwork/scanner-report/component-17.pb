@@ -1,0 +1,1 @@
+1inventario/src/java/com/jjcsn/impl/StockImpl.java 2javaX%h

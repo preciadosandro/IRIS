@@ -1,0 +1,1 @@
+/inventario/src/java/com/jjcsn/model/IStock.java 2javaXh

@@ -1,0 +1,1 @@
+%-ventas/src/java/com/jjcsn/ws/seguridadWs.java 2javaX4h

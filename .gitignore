@@ -22,3 +22,7 @@
 hs_err_pid*
 /inventario/nbproject/private/
 /ventas/nbproject/private/
+/inventario/build/
+/inventario/dist/
+/ventas/dist/
+/ventas/build/

@@ -1,0 +1,1 @@
+.inventario/src/java/com/jjcsn/model/Stock.java 2javaXHh
